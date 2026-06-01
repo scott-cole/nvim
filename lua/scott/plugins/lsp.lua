@@ -20,11 +20,14 @@ return {
         map('gra', vim.lsp.buf.code_action, '[G]oto Code [A]ction', { 'n', 'x' })
         map('grr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
         map('gri', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
+        map('gi', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
         map('grd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
+        map('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
         map('grD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
         map('gO', require('telescope.builtin').lsp_document_symbols, 'Open Document Symbols')
         map('gW', require('telescope.builtin').lsp_dynamic_workspace_symbols, 'Open Workspace Symbols')
         map('grt', require('telescope.builtin').lsp_type_definitions, '[G]oto [T]ype Definition')
+        map('K', vim.lsp.buf.hover, '[H]over Definition')
 
         local function client_supports_method(client, method, bufnr)
           if vim.fn.has 'nvim-0.11' == 1 then
@@ -101,16 +104,38 @@ return {
             completion = {
               callSnippet = 'Replace',
             },
+            diagnostics = {
+              globals = { 'vim' },
+            },
+            workspace = {
+              library = vim.api.nvim_get_runtime_file('', true),
+              checkThirdParty = false,
+            },
           },
         },
       },
+      ts_ls = {},
+      cssls = {},
+      jsonls = {},
+      html = {},
+      emmet_ls = {},
+      tailwindcss = {},
     }
 
-    local ensure_installed = vim.tbl_keys(servers or {})
-    vim.list_extend(ensure_installed, {
-      'stylua',
-    })
-    require('mason-tool-installer').setup { ensure_installed = ensure_installed }
+    require('mason-tool-installer').setup {
+      ensure_installed = {
+        'gopls',
+        'lua-language-server',
+        'stylua',
+        'typescript-language-server',
+        'css-lsp',
+        'json-lsp',
+        'html-lsp',
+        'emmet-ls',
+        'tailwindcss-language-server',
+        'tailwindcss-language-server',
+      },
+    }
 
     require('mason-lspconfig').setup {
       ensure_installed = {},
@@ -123,20 +148,5 @@ return {
         end,
       },
     }
-    vim.lsp.config('lua_ls', {
-      settings = {
-        Lua = {
-          diagnostics = {
-            globals = { 'vim' },
-          },
-          workspace = {
-            library = vim.api.nvim_get_runtime_file('', true),
-            checkThirdParty = false,
-          },
-        },
-      },
-    })
-
-    vim.lsp.enable 'lua_ls'
   end,
 }

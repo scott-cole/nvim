@@ -19,7 +19,7 @@ My personal Neovim configuration.
 
 3. Clone this repo:
    ```sh
-   git clone https://github.com/scottwalke/nvim.git ~/.config/nvim
+   git clone https://github.com/scott-cole/nvim.git ~/.config/nvim
    ```
 
 4. Start Neovim — plugins will install automatically on first launch:

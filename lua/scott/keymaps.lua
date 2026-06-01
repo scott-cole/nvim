@@ -1,6 +1,11 @@
 vim.keymap.set('n', '<leader>pv', vim.cmd.Ex)
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Next [d]iagnostic' })
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Previous [d]iagnostic' })
+vim.keymap.set('n', '<leader>bd', '<cmd>bdelete<CR>', { desc = 'Close [b]uffer' })
+vim.keymap.set('n', '[b', '<cmd>bprevious<CR>', { desc = 'Previous [b]uffer' })
+vim.keymap.set('n', ']b', '<cmd>bnext<CR>', { desc = 'Next [b]uffer' })
 vim.keymap.set('n', '<leader>sp', '<cmd>SpotifyTui<CR>', { desc = 'Toggle Spotify-Tui' })
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 

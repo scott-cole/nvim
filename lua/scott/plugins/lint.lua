@@ -5,6 +5,17 @@ return {
     local lint = require 'lint'
     lint.linters_by_ft = {
       markdown = { 'markdownlint' },
+      javascript = { 'eslint' },
+      typescript = { 'eslint' },
+      javascriptreact = { 'eslint' },
+      typescriptreact = { 'eslint' },
+      python = { 'ruff' },
+      json = { 'jsonlint' },
+      yaml = { 'yamllint' },
+      sh = { 'shellcheck' },
+      zsh = { 'shellcheck' },
+      css = { 'stylelint' },
+      dockerfile = { 'hadolint' },
     }
 
     local lint_augroup = vim.api.nvim_create_augroup('lint', { clear = true })
