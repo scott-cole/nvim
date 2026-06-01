@@ -1,6 +1,6 @@
 vim.keymap.set('n', '<leader>pv', vim.cmd.Ex)
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Next [d]iagnostic' })
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Previous [d]iagnostic' })
 vim.keymap.set('n', '<leader>bd', '<cmd>bdelete<CR>', { desc = 'Close [b]uffer' })
